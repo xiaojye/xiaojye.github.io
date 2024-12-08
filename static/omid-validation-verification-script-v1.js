@@ -892,6 +892,8 @@ module$contents$omid$common$exporter_packageExport("OmidVerificationClient", mod
 var module$contents$omid$validationVerificationScript$ValidationVerificationClient_DefaultLogServer = "https://complianceomsdk.iabtechlab.org/omsdk/sendmessage?", module$exports$omid$validationVerificationScript$ValidationVerificationClient = function(a, b) {
   var c = this;
   this.verificationClient_ = a;
+  a = module$contents$omid$verificationClient$VerificationClient_VERIFICATION_CLIENT_VERSION
+  this.logMessage_("OmidVersion[" + a + "]", (new Date()).getTime());
   a = this.verificationClient_.isSupported();
   this.logMessage_("OmidSupported[" + a + "]", (new Date()).getTime());
 
