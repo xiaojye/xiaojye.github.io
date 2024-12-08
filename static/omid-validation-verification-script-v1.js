@@ -957,16 +957,18 @@ module$exports$omid$validationVerificationScript$ValidationVerificationClient.pr
   this.verificationClient_.sendUrl(a);
 };
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.omidEventListenerCallback_ = function(a) {
-  a = module$contents$omid$common$windowUtils_removeDomElements(a);
+//  a = module$contents$omid$common$windowUtils_removeDomElements(a);
+//  this.logMessage_(a, a.timestamp);
   a = this.serialize_(a, void 0);
   a += "&rawJSON=" + encodeURIComponent(JSON.stringify(a));
-  this.logMessage_(a, a.timestamp);
+  this.sendUrl_(a);
 };
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.sessionObserverCallback_ = function(a) {
-  a = module$contents$omid$common$windowUtils_removeDomElements(a);
+//  a = module$contents$omid$common$windowUtils_removeDomElements(a);
+//  this.logMessage_(a, a.timestamp);
   a = this.serialize_(a, void 0);
   a += "&rawJSON=" + encodeURIComponent(JSON.stringify(a));
-  this.logMessage_(a, a.timestamp);
+  this.sendUrl_(a);
 };
 var module$exports$validationVerificationClientMain = {};
 new module$exports$omid$validationVerificationScript$ValidationVerificationClient(new module$exports$omid$verificationClient$VerificationClient(), "iabtechlab.com-omid");
