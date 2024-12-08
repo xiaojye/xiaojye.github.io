@@ -929,28 +929,6 @@ module$exports$omid$validationVerificationScript$ValidationVerificationClient.pr
   this.sendUrl_(a);
 
 };
-module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.serialize_ = function(a, b) {
-  var c = [],
-    d;
-  for (d in a) {
-    if (a.hasOwnProperty(d)) {
-    var e = b ? b + "[" + d + "]" : d,
-        f = a[d];
-    "videoElement" === d && (f =
-        "DOM Video Element - Present but not parsed to avoid parse error");
-    "slotElement" === d && (f =
-        "DOM Slot Element - Present but not parsed to avoid parse error");
-    Array.isArray(f) && 0 == f.length ? c.push(encodeURIComponent(e) + "=" + encodeURIComponent(
-        "[]")) : c.push(null !== f && "object" === typeof f ? this.serialize_(f, e) :
-        encodeURIComponent(e) + "=" + encodeURIComponent(f));
-    "accessMode" === d && c.push(encodeURIComponent(b ? b + "[friendlyToTop]" :
-        "friendlyToTop") + "=" + JSON.stringify((0, module$exports$omid$common$windowUtils
-            .isTopWindowAccessible)((0, module$exports$omid$common$windowUtils
-            .resolveGlobalContext)())));
-    }
-  }
-  return c.join("&");
-};
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.sendUrl_ = function(a) {
   a = module$contents$omid$validationVerificationScript$ValidationVerificationClient_DefaultLogServer + encodeURIComponent(a);
   console.log(a);
@@ -958,17 +936,11 @@ module$exports$omid$validationVerificationScript$ValidationVerificationClient.pr
 };
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.omidEventListenerCallback_ = function(a) {
   a = module$contents$omid$common$windowUtils_removeDomElements(a);
-//  this.logMessage_(a, a.timestamp);
-  a = this.serialize_(a, void 0);
-  a += "&rawJSON=" + encodeURIComponent(JSON.stringify(a));
-  this.sendUrl_(a);
+  this.logMessage_(a, a.timestamp);
 };
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.sessionObserverCallback_ = function(a) {
   a = module$contents$omid$common$windowUtils_removeDomElements(a);
-//  this.logMessage_(a, a.timestamp);
-  a = this.serialize_(a, void 0);
-  a += "&rawJSON=" + encodeURIComponent(JSON.stringify(a));
-  this.sendUrl_(a);
+  this.logMessage_(a, a.timestamp);
 };
 var module$exports$validationVerificationClientMain = {};
 new module$exports$omid$validationVerificationScript$ValidationVerificationClient(new module$exports$omid$verificationClient$VerificationClient(), "iabtechlab.com-omid");
