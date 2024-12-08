@@ -957,14 +957,14 @@ module$exports$omid$validationVerificationScript$ValidationVerificationClient.pr
   this.verificationClient_.sendUrl(a);
 };
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.omidEventListenerCallback_ = function(a) {
-//  a = module$contents$omid$common$windowUtils_removeDomElements(a);
+  a = module$contents$omid$common$windowUtils_removeDomElements(a);
 //  this.logMessage_(a, a.timestamp);
   a = this.serialize_(a, void 0);
   a += "&rawJSON=" + encodeURIComponent(JSON.stringify(a));
   this.sendUrl_(a);
 };
 module$exports$omid$validationVerificationScript$ValidationVerificationClient.prototype.sessionObserverCallback_ = function(a) {
-//  a = module$contents$omid$common$windowUtils_removeDomElements(a);
+  a = module$contents$omid$common$windowUtils_removeDomElements(a);
 //  this.logMessage_(a, a.timestamp);
   a = this.serialize_(a, void 0);
   a += "&rawJSON=" + encodeURIComponent(JSON.stringify(a));
