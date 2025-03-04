@@ -1,55 +1,66 @@
 <!DOCTYPE html>
-  <html>
-  <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-  <script>
-  function myFunction(mystr)
-  {
-    var img = new Image();
-    img.width = 100;
-    img.height = 50;
-    img.src = "data:image/png;base64,"+mystr;
-    document.body.appendChild(img);
-    <!-- let str=objName.test()-->
-  console.log(mystr)
-    console.log("这部分是将arkts发送过来的str渲染到h5页面上，或者存在h5侧的变量中")
-  }
-window.onload = function() {
-  // 获取文件输入元素
-  var fileInput = document.getElementById('upload');
+<html>
 
-  // 监听文件输入的改变事件
-  fileInput.addEventListener('change', function(e) {
-    // 获取选中的文件
-    var file = e.target.files[0];
-    // 创建一个FileReader对象
-    var reader = new FileReader();
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <script>
+        function myFunction(mystr) {
+            var img = new Image();
+            img.width = 100;
+            img.height = 50;
+            img.src = "data:image/png;base64," + mystr;
+            document.body.appendChild(img);
+            <!-- let str=objName.test()-->
+            console.log(mystr)
+            console.log("这部分是将arkts发送过来的str渲染到h5页面上，或者存在h5侧的变量中")
+        }
+        window.onload = function () {
+            // 获取文件输入元素
+            var fileInput = document.getElementById('upload');
 
-    // 定义文件读取完成后的回调函数
-    reader.onloadend = function() {
-      // 获取图片元素
-      var img = document.getElementById('preview');
-      // 将读取到的结果赋值给图片元素的src属性
-      img.src = reader.result;
-    }
+            // 监听文件输入的改变事件
+            fileInput.addEventListener('change', function (e) {
+                // 获取选中的文件
+                var file = e.target.files[0];
+                // 创建一个FileReader对象
+                var reader = new FileReader();
 
-    // 读取文件内容
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  });
-}
+                // 定义文件读取完成后的回调函数
+                reader.onloadend = function () {
+                    // 获取图片元素
+                    var img = document.getElementById('preview');
+                    // 将读取到的结果赋值给图片元素的src属性
+                    img.src = reader.result;
+                }
+
+                // 读取文件内容
+                if (file) {
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
 
 
-  </script>
-  </head>
-  <body>
-  <form id="upload-form" enctype="multipart/form-data">
-  <!-- 修改type属性为camera -->
-  <input type="file" id="upload" name="upload" accept="image/*" capture="camera" />
-  <!-- 添加一个图片元素用于展示图片 -->
-  <img id="preview"/>
-  </form>
-  <div id="155134"></div>
-  </body>
-  </html>
+    </script>
+</head>
+
+<body>
+    <button onclick="takePhoto()">拍照</button>
+    <form id="upload-form" enctype="multipart/form-data">
+        <!-- 修改type属性为camera -->
+        <input type="file" id="upload" name="upload" accept="image/*" capture="camera" />
+        <!-- 添加一个图片元素用于展示图片 -->
+        <img id="preview" />
+    </form>
+    <div id="155134"></div>
+
+
+    <script>
+
+        function takePhoto() {
+            wineYunJs.setDataFromApp("11")
+        }
+    </script>
+</body>
+
+</html>
