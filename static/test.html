@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更换头像示例</title>
+    <style>
+        body {
+            /* 确保图片不会超出屏幕宽度 */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        #avatarPreview {
+            max-width: 50vw;
+            /* 设置图片最大宽度为屏幕宽度的50% */
+            display: block;
+            /* 确保图片作为块级元素显示 */
+            margin: 10px auto;
+            /* 居中图片 */
+        }
+
+        #avatarPreview img {
+            width: 100%;
+            /* 图片宽度自动适应其容器宽度 */
+            height: auto;
+            /* 高度自适应保持图片比例 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>点击选择新头像</h2>
+    <input type="file" id="avatarInput" accept="image/*" style="margin-bottom:10px;">
+    <button onclick="uploadAvatar()">上传头像至OSS</button>
+    <button onclick="changeAvatar()">显示头像</button>
+    <button onclick="takePhoto()">拍照</button>
+
+    <div id="avatarPreview"></div>
+
+    <script>
+        async function uploadAvatar() {
+            const input = document.getElementById('avatarInput');
+            if (input.files && input.files[0]) {
+                // 模拟异步上传图片至OSS的过程
+                try {
+                    const formData = new FormData();
+                    formData.append('file', input.files[0]);
+
+                    // 这里使用fetch API模拟上传请求，实际应用中需要替换为真实的服务端API地址
+                    const response = await fetch('https://your-fake-oss-api.com/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    alert('图片上传成功！服务器响应：' + JSON.stringify(result));
+                } catch (error) {
+                    alert('图片上传失败：' + error);
+                }
+            }
+        }
+
+        function changeAvatar() {
+            const input = document.getElementById('avatarInput');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('avatarPreview').innerHTML = `<img src="${e.target.result}" alt="头像预览">`;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function takePhoto() {
+            wineYunJs.setDataFromApp("11")
+        }
+    </script>
+
+</body>
+
+</html>
