@@ -5,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <script>
         function myFunction(mystr) {
-            var img = new Image();
-            img.width = 100;
-            img.height = 50;
+            var img = document.getElementById('preview');
             img.src = "data:image/png;base64," + mystr;
-            document.body.appendChild(img);
-            <!-- let str=objName.test()-->
-            console.log(mystr)
-            console.log("这部分是将arkts发送过来的str渲染到h5页面上，或者存在h5侧的变量中")
         }
         window.onload = function () {
             // 获取文件输入元素
